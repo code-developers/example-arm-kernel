@@ -194,3 +194,7 @@ sub read_kconfig {
 	}
     }
 }
+
+if ($kconfig) {
+    read_kconfig($kconfig);
+}
