@@ -10,6 +10,12 @@ extern "C" {
 #include <stdbool.h>
 #endif
 
+struct file {
+    struct file *next;
+    struct file *parent;
+    const char *name;
+    int lineno;
+};
 
 
 }
