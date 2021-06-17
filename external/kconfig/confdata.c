@@ -41,3 +41,6 @@ static void conf_default_message_callback(const char *fmt, va_list ap)
 	vprintf(fmt, ap);
 	printf("\n#\n");
 }
+
+static void (*conf_message_callback) (const char *fmt, va_list ap) =
+        conf_default_message_callback;
