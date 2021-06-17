@@ -30,3 +30,12 @@ enum input_mode {
 	listnewconfig,
 	oldnoconfig,
 } input_mode = oldaskconfig;
+
+char *defconfig_file;
+
+static int indent = 1;
+static int valid_stdin = 1;
+static int sync_kconfig;
+static int conf_cnt;
+static char line[128];
+static struct menu *rootEntry;
