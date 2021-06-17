@@ -44,3 +44,8 @@ static void conf_default_message_callback(const char *fmt, va_list ap)
 
 static void (*conf_message_callback) (const char *fmt, va_list ap) =
         conf_default_message_callback;
+
+void conf_set_message_callback(void (*fn) (const char *fmt, va_list ap))
+{
+    conf_message_callback = fn;
+}
