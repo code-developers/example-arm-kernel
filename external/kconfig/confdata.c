@@ -49,3 +49,12 @@ void conf_set_message_callback(void (*fn) (const char *fmt, va_list ap))
 {
     conf_message_callback = fn;
 }
+
+static void conf_message(const char *fmt, ...)
+{
+    va_list ap;
+
+    va_start(ap, fmt);
+    if (conf_message_callback)
+        conf_message_callback(fmt, ap);
+}
