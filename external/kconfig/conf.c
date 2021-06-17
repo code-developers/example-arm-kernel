@@ -77,3 +77,15 @@ static void check_stdin(void)
 		exit(1);
 	}
 }
+
+static int conf_askvalue(struct symbol *sym, const char *def)
+{
+	enum symbol_type type = sym_get_type(sym);
+
+	if (!sym_has_value(sym))
+		printf(_("(NEW) "));
+	
+	line[0] = '\n';
+	line[1] = 0;
+
+}
