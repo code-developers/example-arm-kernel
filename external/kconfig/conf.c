@@ -84,14 +84,42 @@ static int conf_askvalue(struct symbol *sym, const char *def)
 
 	if (!sym_has_value(sym))
 		printf(_("(NEW) "));
-	
+
 	line[0] = '\n';
 	line[1] = 0;
 
-	if (!sym_if_changable(sym)) {
+	if (!sym_is_changable(sym)) {
 		printf("%s\n", def);
 		line[0] = '\n';
 		line[1] = 0;
 		return 0;
 	}
+
+	switch (input_mode) {
+	case oldconfig:
+	case silentoldconfig:
+		if (sym_has_value(sym)) {
+			printf("%s\n", def);
+			return 0;
+		}
+		check_stdin();
+	case oldaskconfig:
+		fflush(stdout);
+		xfgets(line, 128, stdin);
+		return 1;
+	default:
+		break;
+	}
+
+	switch (type) {
+	case S_INT:
+	case S_HEX:
+	case S_STRING:
+		printf("%s\n", def);
+		return 1;
+	default:
+		;
+	}
+	printf("%s", line);
+	return 1;
 }
