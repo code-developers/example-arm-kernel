@@ -39,3 +39,14 @@ static int sync_kconfig;
 static int conf_cnt;
 static char line[128];
 static struct menu *rootEntry;
+
+
+static void print_help(struct menu *menu)
+{
+    struct gstr help = str_new();
+
+    menu_get_ext_help(menu, &help);
+
+    	printf("\n%s\n", str_get(&help));
+        str_free(&help);
+}
