@@ -17,5 +17,9 @@ struct file {
     int lineno;
 };
 
+typedef enum tristate {
+    no, mod, yes
+} tristate;
+
 
 }
