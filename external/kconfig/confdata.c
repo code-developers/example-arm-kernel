@@ -179,3 +179,12 @@ static int conf_set_sym_val(struct symbol *sym, int def, int def_flags, char *p)
 	}
 	return 0;
 }
+
+int conf_read_simple(const char *name, int def)
+{
+	FILE *in = NULL;
+	char line[1024];
+	char *p, *p2;
+	struct symbol *sym;
+	int i, def_flags;
+}
