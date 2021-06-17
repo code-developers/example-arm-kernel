@@ -58,3 +58,10 @@ static void conf_message(const char *fmt, ...)
     if (conf_message_callback)
         conf_message_callback(fmt, ap);
 }
+
+const char *conf_get_configname(void)
+{
+    char *name = getenv("F9_CONFIG");
+
+    return name ? name : ".config";
+}
