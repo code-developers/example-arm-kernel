@@ -67,3 +67,23 @@ sub find_config {
     }
     die "No config file found";
 }
+
+find_config;
+
+my $ksource = $ARGV[0];
+my $kconfig = $ARGV[1];
+my $lsmod_file = $ARGV[2];
+
+my @makefiles = `find $ksource -name Makefile 2>/dev/null`;
+chomp @makefiles;
+
+my %depends;
+my %selects;
+my %prompts;
+my %objects;
+my $var;
+my $iflevel = 0;
+my @ifdeps;
+
+# prevent recursion
+my %read_kconfigs;
