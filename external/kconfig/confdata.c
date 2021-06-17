@@ -9,3 +9,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <libgen.h>
+
+#define LKC_DIRECT_LINK
+#include "lkc.h"
+
