@@ -50,3 +50,20 @@ static void print_help(struct menu *menu)
     	printf("\n%s\n", str_get(&help));
         str_free(&help);
 }
+
+static void strip(char *str)
+{
+	char *p = str;
+	int l;
+
+	while ((isspace(*p)))
+		p++;
+	l = strlen(p);
+	if (p != str)
+		memmove(str, p, l + 1);
+	if (!l)
+		return;
+	p = str + l - 1;
+	while ((isspace(*p)))
+		*p-- = 0;
+}
