@@ -15,3 +15,18 @@
 
 static void conf(struct menu **menu);
 static void check_conf(struct menu **menu);
+
+enum input_mode {
+	oldaskconfig,
+	silentoldconfig,
+	oldconfig,
+	allnoconfig,
+	allyesconfig,
+	allmodconfig,
+	alldefconfig,
+	randconfig,
+	defconfig,
+	savedefconfig,
+	listnewconfig,
+	oldnoconfig,
+} input_mode = oldaskconfig;
