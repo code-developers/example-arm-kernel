@@ -73,12 +73,26 @@ const char *conf_get_autoconfig_name(void)
 
 static char *conf_expand_value(const char *in)
 {
-    struct symbol *sym;
-    const char *src;
-    static char res_value[SYMBOL_MAXLENGHT];
-    char *dst, name[SYMBOL_MAXLENGHT];
+	struct symbol *sym;
+	const char *src;
+	static char res_value[SYMBOL_MAXLENGTH];
+	char *dst, name[SYMBOL_MAXLENGTH];
 
-    res_value[0] = 0;
-    dst = name;
-    
+	res_value[0] = 0;
+	dst = name;
+	while ((src = strchr(in, '$'))) {
+		strncat(res_value, in, src - in);
+		src++;
+		dst = name;
+		while (isalnum(*src) || *src == '_')
+			*dst++ = *src++;
+		*dst = 0;
+		sym = sym_lookup(name, 0);
+		sym_calc_value(sym);
+		strcat(res_value, sym_get_string_value(sym));
+		in = src;
+	}
+	strcat(res_value, in);
+
+	return res_value;
 }
