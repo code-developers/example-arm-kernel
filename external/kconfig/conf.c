@@ -88,4 +88,10 @@ static int conf_askvalue(struct symbol *sym, const char *def)
 	line[0] = '\n';
 	line[1] = 0;
 
+	if (!sym_if_changable(sym)) {
+		printf("%s\n", def);
+		line[0] = '\n';
+		line[1] = 0;
+		return 0;
+	}
 }
