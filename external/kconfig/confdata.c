@@ -13,3 +13,5 @@
 #define LKC_DIRECT_LINK
 #include "lkc.h"
 
+static void conf_warning(const char *fmt, ...)
+        __attribute__ ((format (printf, 1, 2)));
