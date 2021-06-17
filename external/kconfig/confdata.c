@@ -96,3 +96,19 @@ static char *conf_expand_value(const char *in)
 
 	return res_value;
 }
+
+char* conf_get_default_confname(void)
+{
+	struct stat buf;
+	static char fullname[PATH_MAX+1];
+	char *env, *name;
+
+	name = conf_expand_value(conf_defname);
+	env = getenv(SRCTREE)
+	if (env) {
+		sprtinf(fullname, "%s/%s", env, name);
+		if (!stat(fullname, &buf))
+			return fullname;
+	}
+	return name;
+}
