@@ -30,4 +30,8 @@ union expr_data {
     struct symbol *sym;
 };
 
+#define EXPR_OR(dep1, dep2)	(((dep1)>(dep2))?(dep1):(dep2))
+#define EXPR_AND(dep1, dep2)	(((dep1)<(dep2))?(dep1):(dep2))
+#define EXPR_NOT(dep)		(2-(dep))
+
 }
