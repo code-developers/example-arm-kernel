@@ -15,3 +15,6 @@
 
 static void conf_warning(const char *fmt, ...)
         __attribute__ ((format (printf, 1, 2)));
+
+static void conf_message(const char *fmt, ...)
+        __attribute__ ((format (printf, 1, 2)));
