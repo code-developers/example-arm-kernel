@@ -34,3 +34,10 @@ static void conf_warning(const char *fmt, ...)
 	va_end(ap);
 	conf_warnings++;
 }
+
+static void conf_default_message_callback(const char *fmt, va_list ap)
+{
+	printf("#\n# ");
+	vprintf(fmt, ap);
+	printf("\n#\n");
+}
