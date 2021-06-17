@@ -70,3 +70,15 @@ const char *conf_get_autoconfig_name(void)
 {
     return getenv("KCONFIG_AUTOCONFIG");
 }
+
+static char *conf_expand_value(const char *in)
+{
+    struct symbol *sym;
+    const char *src;
+    static char res_value[SYMBOL_MAXLENGHT];
+    char *dst, name[SYMBOL_MAXLENGHT];
+
+    res_value[0] = 0;
+    dst = name;
+    
+}
