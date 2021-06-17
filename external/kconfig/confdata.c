@@ -18,3 +18,8 @@ static void conf_warning(const char *fmt, ...)
 
 static void conf_message(const char *fmt, ...)
         __attribute__ ((format (printf, 1, 2)));
+
+static const char *conf_filename;
+static int conf_lineno, conf_warning, conf_unsaved;
+
+const char conf_defname[] = ".defconfig";
